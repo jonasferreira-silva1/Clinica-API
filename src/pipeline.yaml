@@ -1,0 +1,49 @@
+Resources:
+  MyCodePipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      RoleArn: ARN_DO_PAPEL_DO_CODEPIPELINE
+      ArtifactStore:
+        Location: NOME_DO_BUCKET_S3
+        Type: S3
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: SourceAction
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Version: 1
+                Provider: S3
+              Configuration:
+                S3Bucket: NOME_DO_BUCKET_S3
+                S3ObjectKey: ARQUIVO_DO_CODIGO_ZIPADO
+              OutputArtifacts:
+                - Name: SourceOutput
+        - Name: Build
+          Actions:
+            - Name: BuildAction
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Version: 1
+                Provider: CodeBuild
+              Configuration:
+                ProjectName: NOME_DO_PROJETO_DO_CODEBUILD
+              InputArtifacts:
+                - Name: SourceOutput
+              OutputArtifacts:
+                - Name: BuildOutput
+        - Name: Deploy
+          Actions:
+            - Name: DeployAction
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Version: 1
+                Provider: CodeDeploy
+              Configuration:
+                ApplicationName: NOME_DA_APLICACAO_DO_CODEDEPLOY
+                DeploymentGroupName: NOME_DO_GRUPO_DE_DEPLOY_DO_CODEDEPLOY
+              InputArtifacts:
+                - Name: BuildOutput
