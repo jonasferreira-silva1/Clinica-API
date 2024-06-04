@@ -1,4 +1,4 @@
-"# Clinica_API", "# Front-end-html-css-javascript", "# Back-end-API", "# Dcoker" 
+"# Clinica_API", "# Front-end-html-css-javascript", "# Back-end-API", "# Dcoker"
 
 Este código cria uma interface frontend para interagir com uma API RESTful que gerencia dados de pets. Os formulários permitem listar, cadastrar, atualizar e excluir pets. O JavaScript faz solicitações AJAX para o backend em Java, que por sua vez se comunica com um banco de dados PostgreSQL para executar essas operações.
 
@@ -44,8 +44,9 @@ Isso iniciará o backend em um contêiner Docker, tornando-o acessível na porta
 
 Certifique-se de substituir nome-do-arquivo-jar.jar pelo nome real do arquivo JAR gerado pelo Maven e nome-da-imagem pelo nome que você deseja dar à imagem Docker.
 
-
-contrução do docker 
+contrução do docker
 nome da imagem: clinica-api
 
 docker run -d -p 8082:80 clinica-api
+
+teste 04/06/2024
