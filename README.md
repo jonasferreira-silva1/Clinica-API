@@ -49,4 +49,4 @@ nome da imagem: clinica-api
 
 docker run -d -p 8082:80 clinica-api
 
-teste 04/06/2024 .
+teste 04/06/2024
