@@ -25,13 +25,13 @@ jobs:
       - name: Push image docker
         run: docker push jonasfsilva/deploy-clinica-api
 
-  # deploy:
-  #   needs: build
-  #   runs-on: self-hosted
-  #   steps:
-  #     - name: Pull image from docker hub
-  #       run: docker pull jonasfsilva/deploy-clinica-api:latest
-  #     - name: Remove docker container
-  #       run: docker rm -f deploy-nassau-pro
-  #     - name: Run docker container
-  #       run: docker run -d -p 8080:8080 -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_URL=${{secrets.DATABASE_URL}} --name deploy-nassau-pro jonasfsilva/deploy-clinica-api:latest
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull jonasfsilva/deploy-clinica-api:latest
+      # - name: Remove docker container
+      #   run: docker rm -f deploy-clinica-api
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_URL=${{secrets.DATABASE_URL}} --name deploy-clinica-api jonasfsilva/deploy-clinica-api:latest
