@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para listar pets
   const listarPets = () => {
-    fetch("http://localhost:8080/pet/listar")
+    fetch("http://44.203.116.227:8080/pet/listar")
       .then((response) => response.json())
       .then((data) => exibirListaPets(data))
       .catch((error) => console.error("Erro ao listar os pets:", error));
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    fetch("http://localhost:8080/pet/cadastrar", {
+    fetch("http://44.203.116.227:8080/pet/cadastrar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoPet),
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const novoNome = document.getElementById("novo-nome").value;
     const novaRaca = document.getElementById("nova-raca").value;
 
-    fetch(`http://localhost:8080/pet/atualizar/${petId}`, {
+    fetch(`http://44.203.116.227:8080/pet/atualizar/${petId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome: novoNome, raca: novaRaca }),
@@ -107,7 +107,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const petId = document.getElementById("id-excluir").value;
 
-    fetch(`http://localhost:8080/pet/delete/${petId}`, { method: "DELETE" })
+    fetch(`http://44.203.116.227:8080/pet/delete/${petId}`, {
+      method: "DELETE",
+    })
       .then((response) => response.json())
       .then((data) => {
         alert("Pet excluído com sucesso!");
