@@ -50,5 +50,3 @@ nome da imagem: clinica-api
 docker run -d -p 8082:80 clinica-api
 
 deploy 04/06/2024
-
-.
